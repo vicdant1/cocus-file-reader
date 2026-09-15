@@ -34,4 +34,16 @@ public sealed class JsonFileReaderTests
 
         Assert.ThrowsAny<JsonException>(() => _reader.Read(file.Path));
     }
+
+    [Fact]
+    public void Read_WithEncryption_ReturnsDecryptedJsonContent()
+    {
+        using var file = new TempFile("""}"megasneM":"eltit"{""");
+        var reader = new JsonFileReader(new ReverseEncryption());
+        var expected = string.Join(Environment.NewLine, "{", "  \"title\": \"Mensagem\"", "}");
+
+        var content = reader.Read(file.Path);
+
+        Assert.Equal(expected, content);
+    }
 }
