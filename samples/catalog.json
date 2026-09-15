@@ -1,0 +1,7 @@
+{
+  "author": "Fernando Pessoa",
+  "books": [
+    { "title": "Mensagem", "year": 1934 },
+    { "title": "Livro do Desassossego", "year": 1982 }
+  ]
+}
