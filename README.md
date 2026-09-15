@@ -38,3 +38,4 @@ Every `IEncryption` and `IAccessPolicy` implementation in the library is discove
 | v3  | A user should be able to read an encrypted TEXT file |
 | v4  | A user should be able to read XML files in role based security context |
 | v5  | A user should be able to read an encrypted XML file |
+| v6  | A user should be able to read TEXT files in role based security context |
