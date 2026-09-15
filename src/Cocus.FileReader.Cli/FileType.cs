@@ -2,5 +2,6 @@ namespace Cocus.FileReader.Cli;
 
 internal enum FileType
 {
-    Text
+    Text,
+    Xml
 }

@@ -26,3 +26,4 @@ Sample files are available in the `samples` folder.
 | Tag | User story |
 |-----|------------|
 | v1  | A user should be able to read a text file |
+| v2  | A user should be able to read an XML file |
