@@ -21,9 +21,13 @@ dotnet run --project src/Cocus.FileReader.Cli
 
 Sample files are available in the `samples` folder.
 
-## Encryption
+## Extensibility
 
-Every `IEncryption` implementation in the library is discovered through reflection and listed by the CLI when reading an encrypted file. Adding a new algorithm only requires a new class; no existing code changes.
+Every `IEncryption` and `IAccessPolicy` implementation in the library is discovered through reflection and listed by the CLI. Adding a new encryption algorithm or a real role based security system only requires a new class; no existing code changes.
+
+## Role based security
+
+`SimpleAccessPolicy` lets the `admin` role read every file, while other roles can only read files inside a `public` directory (e.g. `samples/public/heteronyms.xml`).
 
 ## Versions
 
@@ -32,3 +36,4 @@ Every `IEncryption` implementation in the library is discovered through reflecti
 | v1  | A user should be able to read a text file |
 | v2  | A user should be able to read an XML file |
 | v3  | A user should be able to read an encrypted TEXT file |
+| v4  | A user should be able to read XML files in role based security context |
