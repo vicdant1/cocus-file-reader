@@ -24,4 +24,16 @@ public sealed class XmlFileReaderTests
 
         Assert.Throws<XmlException>(() => _reader.Read(file.Path));
     }
+
+    [Fact]
+    public void Read_WithEncryption_ReturnsDecryptedXmlContent()
+    {
+        using var file = new TempFile(">golatac/<>meti/<olleH>meti<>golatac<");
+        var reader = new XmlFileReader(new ReverseEncryption());
+        var expected = string.Join(Environment.NewLine, "<catalog>", "  <item>Hello</item>", "</catalog>");
+
+        var content = reader.Read(file.Path);
+
+        Assert.Equal(expected, content);
+    }
 }
