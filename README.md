@@ -41,3 +41,4 @@ Every `IEncryption` and `IAccessPolicy` implementation in the library is discove
 | v6  | A user should be able to read TEXT files in role based security context |
 | v7  | A user should be able to read JSON files |
 | v8  | A user should be able to read encrypted JSON files |
+| v9  | A user should be able to read JSON files in role based security context |

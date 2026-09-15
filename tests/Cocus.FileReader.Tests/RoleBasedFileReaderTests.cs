@@ -41,4 +41,24 @@ public sealed class RoleBasedFileReaderTests
 
         Assert.Throws<UnauthorizedAccessException>(() => reader.Read(file.Path));
     }
+
+    [Fact]
+    public void Read_ReturnsJsonContentWhenAccessIsAllowed()
+    {
+        using var file = new TempFile("[]");
+        var reader = new RoleBasedFileReader(new JsonFileReader(), new SimpleAccessPolicy(), "admin");
+
+        var content = reader.Read(file.Path);
+
+        Assert.Equal("[]", content);
+    }
+
+    [Fact]
+    public void Read_ThrowsWhenJsonAccessIsDenied()
+    {
+        using var file = new TempFile("[]");
+        var reader = new RoleBasedFileReader(new JsonFileReader(), new SimpleAccessPolicy(), "user");
+
+        Assert.Throws<UnauthorizedAccessException>(() => reader.Read(file.Path));
+    }
 }
