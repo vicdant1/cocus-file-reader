@@ -1,0 +1,2 @@
+Hello, COCUS!
+This is a plain text file.

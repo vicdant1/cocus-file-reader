@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Cocus.FileReader.Cli/Cocus.FileReader.Cli.csproj" />
+    <Project Path="src/Cocus.FileReader/Cocus.FileReader.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Cocus.FileReader.Tests/Cocus.FileReader.Tests.csproj" />
+  </Folder>
+</Solution>
