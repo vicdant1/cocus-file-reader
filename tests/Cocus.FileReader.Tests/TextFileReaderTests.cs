@@ -21,4 +21,15 @@ public sealed class TextFileReaderTests
 
         Assert.Throws<FileNotFoundException>(() => _reader.Read(path));
     }
+
+    [Fact]
+    public void Read_WithEncryption_ReturnsDecryptedContent()
+    {
+        using var file = new TempFile("!SUCOC ,olleH");
+        var reader = new TextFileReader(new ReverseEncryption());
+
+        var content = reader.Read(file.Path);
+
+        Assert.Equal("Hello, COCUS!", content);
+    }
 }

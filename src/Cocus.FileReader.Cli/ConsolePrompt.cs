@@ -31,18 +31,19 @@ internal sealed class ConsolePrompt(TextReader input, TextWriter output)
         }
     }
 
-    public TEnum Choose<TEnum>(string question) where TEnum : struct, Enum
-    {
-        var options = Enum.GetValues<TEnum>();
+    public TEnum Choose<TEnum>(string question) where TEnum : struct, Enum =>
+        Choose(question, Enum.GetValues<TEnum>(), option => option.ToString());
 
+    public T Choose<T>(string question, T[] options, Func<T, string> describe)
+    {
         Show(question);
         for (var i = 0; i < options.Length; i++)
-            Show($"  {i + 1}) {options[i]}");
+            Show($"  {i + 1}) {describe(options[i])}");
 
         while (true)
         {
             var answer = Ask(">");
-            var index = Array.FindIndex(options, option => option.ToString().Equals(answer, StringComparison.OrdinalIgnoreCase));
+            var index = Array.FindIndex(options, option => describe(option).Equals(answer, StringComparison.OrdinalIgnoreCase));
 
             if (index < 0 && int.TryParse(answer, out var number))
                 index = number - 1;
